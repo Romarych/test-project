@@ -8,7 +8,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { withStyles } from '@material-ui/core/styles';
-import { MenuItem } from '@mui/material';
 
 const StyledTableRow = withStyles((theme) => ({
   root: {
@@ -29,9 +28,7 @@ const StyledTableCell = withStyles((theme) => ({
 }))(TableCell);
 
 
-const ProfileForm = ({ handleSubmit, profile, onSubmit, ...props }) => {
-
-console.log()
+const ProfileForm = ({ handleSubmit }) => {
 
   return (
     <>
@@ -42,9 +39,9 @@ console.log()
             <TableHead>
               <TableRow>
                 <StyledTableCell align="center">Name</StyledTableCell>
-                <StyledTableCell align="center">Status</StyledTableCell>
-                <StyledTableCell align="center">Gender</StyledTableCell>
                 <StyledTableCell align="center">Email</StyledTableCell>
+                <StyledTableCell align="center">Gender</StyledTableCell>
+                <StyledTableCell align="center">Status</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -53,10 +50,7 @@ console.log()
                   <Field placeholder='Name' name='name' validate={[]} component={Input} type='' />
                 </StyledTableCell>
                 <StyledTableCell align="center">
-                  <Field  placeholder='Status' name='status' validate={[]} component={SelectField} type='' >
-                    <option value={'active'}>Active</option>
-                    <option value={'inactive'}>Inactive</option>
-                  </Field>
+                  <Field placeholder='Email' name='email' validate={[]} component={Input} type='' />
                 </StyledTableCell>
                 <StyledTableCell align="center">
                 <Field  placeholder='Gender' name='gender' validate={[]} component={SelectField} type='' >
@@ -65,7 +59,10 @@ console.log()
                   </Field>
                 </StyledTableCell>
                 <StyledTableCell align="center">
-                  <Field placeholder='Email' name='email' validate={[]} component={Input} type='' />
+                  <Field  placeholder='Status' name='status' validate={[]} component={SelectField} type='' >
+                    <option value={'active'}>Active</option>
+                    <option value={'inactive'}>Inactive</option>
+                  </Field>
                 </StyledTableCell>
               </StyledTableRow>
             </TableBody>

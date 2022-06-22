@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import { withStyles } from '@material-ui/core/styles';
@@ -22,7 +22,7 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-export default function User({ user, ...props }) {
+export default function User({ user }) {
   return (    
     <StyledTableRow >
       <StyledTableCell component="th" scope="row">
@@ -30,9 +30,9 @@ export default function User({ user, ...props }) {
         <b>{user.name}</b>
         </NavLink>
       </StyledTableCell>
-      <StyledTableCell align="right">{user.status}</StyledTableCell>
-      <StyledTableCell align="right">{user.gender}</StyledTableCell>
       <StyledTableCell align="right">{user.email}</StyledTableCell>
+      <StyledTableCell align="right">{user.gender}</StyledTableCell>
+      <StyledTableCell align="right">{user.status}</StyledTableCell>
     </StyledTableRow>
   );
 }

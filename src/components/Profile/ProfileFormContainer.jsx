@@ -6,9 +6,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import { compose } from "redux";
 import { getProfileData } from "../../redux/profile-selector";
 import { toast } from 'react-toastify'
+import { getCurrentPage } from "../../redux/users-selector";
 
 
-const ProfileContainer = ({ profile, params, getProfile, saveProfile }) => {
+const ProfileContainer = ({currentPage, profile, params, getProfile, saveProfile }) => {
     let userId = params.userId
 
     let navigate = useNavigate()
@@ -20,16 +21,16 @@ const ProfileContainer = ({ profile, params, getProfile, saveProfile }) => {
     const onSubmit = (formData) => {
 
         saveProfile(formData, userId).then(() => {
-            navigate('/users')
-            toast.success('Update data succes!')
+            navigate('/users/' + currentPage)
+            toast.success('Update data success!')
         }).catch(() => {
-            toast.error('Some ocured eror')
+            toast.error('Some occured error')
         })
     }
 
     return (
         <>
-            <ProfileForm initialValues={profile}  onSubmit={onSubmit} profile={profile} params={params} />
+            <ProfileForm initialValues={profile}  onSubmit={onSubmit} profile={profile} />
         </>
     )
 }
@@ -40,7 +41,8 @@ const withLocation = ProfileContainer => props => {
 };
 
 let mapStateToProps = (state) => ({
-    profile: getProfileData(state)
+    profile: getProfileData(state),
+    currentPage: getCurrentPage(state),
 })
 
 export default compose(
