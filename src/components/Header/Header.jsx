@@ -8,12 +8,14 @@ import { getCurrentPage } from '../../redux/users-selector'
 const Header = (props) => {
     return (
         <header>
-            <Grid item md={12} sx={{ color: '#fff', fontSize: 20, background: 'grey', height: 60, background: '#607d9f', display: 'flex', alignItems: 'center', padding: 1 }}>
-                <Hidden only={['md', 'lg', 'xl']}>
+            <nav>
+                <Grid item md={12} sx={{ color: '#fff', fontSize: 20, background: 'grey', height: 60, background: '#607d9f', display: 'flex', alignItems: 'center', padding: 1 }}>
+                    <Hidden only={['md', 'lg', 'xl']}>
 
-                    <NavLink to={"/users/" + props.currentPage} className={({ isActive }) => isActive ? 'active' : ""}>Users</NavLink>
-                </Hidden>
-            </Grid>
+                        <NavLink to={"/users/" + props.currentPage} className={({ isActive }) => isActive ? 'active' : ""}>Users</NavLink>
+                    </Hidden>
+                </Grid>
+            </nav>
         </header>
     )
 }
