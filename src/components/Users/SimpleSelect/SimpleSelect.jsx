@@ -17,30 +17,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimpleSelect(props) {
   const classes = useStyles();
-  const [gender, setGender] = React.useState('');
-
-  const handleChange = (event) => {
-    setGender(event.target.value);
-  };
-
     return (
         <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label">Gender</InputLabel>
             <Select
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
-                value={gender}
-                onChange={handleChange}
+                value={props.gender}
+                onChange={(e) => props.filterGender(e.target.value)}
                 label="Gender"
             >
                 <MenuItem 
-                    onClick={() => props.filterGender('none')} 
-                    value={'none'}>None</MenuItem>
+                    value={''}>None</MenuItem>
                 <MenuItem 
-                    onClick={() => props.filterGender('female')} 
                     value={'female'}>Female</MenuItem>
                 <MenuItem 
-                    onClick={() => props.filterGender('male')}
                     value={'male'}>Male</MenuItem>
             </Select>
             </FormControl>
